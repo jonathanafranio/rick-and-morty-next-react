@@ -1,0 +1,12 @@
+.footer {
+    background-color: $bg_footer;
+    box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.15);
+    text-align: center;
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+    }
+
+}

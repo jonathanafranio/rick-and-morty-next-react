@@ -1,0 +1,25 @@
+//Reset
+@import 'reset/_imports';
+@import 'reset/_variables';
+@import 'reset/_normalize';
+@import 'reset/_grid';
+
+//Elements
+@import 'elements/_content';
+
+//Header
+@import 'header/_header';
+
+// Agrupa todos os blocos do projeto
+@import 'blocks/_page-section';
+@import 'blocks/_character-list';
+@import 'blocks/_form-search';
+@import 'blocks/_card-post';
+@import 'blocks/_card-list';
+@import 'blocks/_character-info';
+@import 'blocks/_episodes';
+@import 'blocks/_character';
+@import 'blocks/_pagination';
+
+//Footer
+@import 'footer/_footer';

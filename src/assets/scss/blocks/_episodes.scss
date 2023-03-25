@@ -1,0 +1,43 @@
+.episodes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid $green;
+    border-radius: 10px;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+    @media screen and (min-width: 768px) {
+        width: calc( 100% - 300px);
+    }
+
+    &__table {
+        border: none;
+        border-collapse: collapse;
+        text-align: left;
+
+        th,
+        td {
+            line-height: 40px;
+            &:first-child {
+                width: 20%;
+                min-width: 90px;
+                text-align: left;
+            }
+        }
+
+        td:first-child {
+            color: $blue;
+        }
+
+        strong {
+            color: $green;
+        }
+    }
+
+    &__tr {
+        border-bottom: 1px solid $green;
+    }
+}

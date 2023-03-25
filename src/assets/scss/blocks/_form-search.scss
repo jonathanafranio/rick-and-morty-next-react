@@ -1,0 +1,74 @@
+.form-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 65px;
+    border-radius: 5px;
+    border: 1px solid $green;
+
+    @media screen and (max-width: 767px) {
+        flex-wrap: wrap;
+        padding: 25px;
+    }
+    @media screen and (min-width: 768px) {
+        padding: 25px;
+    }
+
+
+    &__label{
+        font-size: 2rem;
+        font-weight: 700;
+        color: $light-main;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin-top: 20px;
+        }
+        @media screen and (min-width: 768px) {
+            //width: calc(100% - 240px);
+            margin: auto 5px;
+        }
+    }
+
+    &__select,
+    &__input {
+        display: inline-block;
+        padding: 12px 15px;
+        color: #717171;
+    }
+
+    &__select {
+      border-radius: 5px;
+      border: 1px solid $green;
+    }
+
+    &__input {
+      width: calc(100% - 55px);
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-color: $green;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 55px;
+        background-color: $main-color;
+        color: $light-main;
+        border: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    &__svg {
+        width: 27px;
+    }
+}

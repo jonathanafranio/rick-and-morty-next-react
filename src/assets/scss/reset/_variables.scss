@@ -1,0 +1,37 @@
+$main-font: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+
+// ========================================
+// Colors
+// ========================================
+$light-main: #fff;
+$green: #61d718;
+$blue: #2D99D6;
+$main-color: $green;
+
+$light-text: $main-color;
+$text-color: $light-main;
+$dark-text: #3e3e3e;
+$link-defalt: $main-color;
+
+$bg_footer: #000;
+$txt_footer: $light-main;
+$bg_header: #000;
+
+// ========================================
+// Backgrounds
+// ========================================
+$bg-body:#000;
+$bg-secundary: #434343;
+
+
+// ----------------------------------------
+// Padding & Margin
+// ----------------------------------------
+$padding: 10px;
+$v-margin: 25px;
+
+// ========================================
+// Grids - Sizes and Columns
+// ========================================
+$max-size: 1140px;
+$sizes: (mx,$max-size,12,last), (df,1023px,12), (md,767px,12), (sm,600px,6), (ph,520px,2);
