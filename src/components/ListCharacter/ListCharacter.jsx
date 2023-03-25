@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import Preload from '../Preload';
+import Preload from '../Preload.jsx';
+import CardCharacter from './CardCharacter.jsx'
 
 const ListCharacter = (props) => {
     const page_num = props.page_num ? props.page_num : 1;
@@ -58,11 +59,16 @@ const ListCharacter = (props) => {
                 </p>
             ) : false }
 
-            <ul>
+            <div className="character-list__page">
                 { characters.map( (character) => (
-                    <li>{ character.name }</li>
+                    <CardCharacter 
+                        key={ character.id }
+                        id_character={ character.id } 
+                        title={ character.name }
+                        species={ character.species }
+                        thumb={ character.image } />
                 ) ) }
-            </ul>
+            </div>
             
             { loading ? (
                 <Preload />
