@@ -1,8 +1,10 @@
 import LayoutDefault from "@/components/Layouts/LayoutDefault";
+import ListCharacter from "@/components/ListCharacter/ListCharacter"
+
 const Home = () => {
     return (
         <LayoutDefault>
-            <h1>VAI CORINTHIANS</h1>
+            <ListCharacter />
         </LayoutDefault>
     )
 }
