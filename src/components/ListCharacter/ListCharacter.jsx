@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Preload from '../Preload.jsx';
 import CardCharacter from './CardCharacter.jsx'
+import Pagination from '../Pagination.jsx';
 
 const ListCharacter = (props) => {
     const page_num = props.page_num ? props.page_num : 1;
@@ -69,6 +70,16 @@ const ListCharacter = (props) => {
                         thumb={ character.image } />
                 ) ) }
             </div>
+            
+            { ! loading && pagination.last > 1 ? (
+                <Pagination 
+                    next={ pagination.next }
+                    prev={ pagination.prev }
+                    active={ page }
+                    last={ pagination.last }
+                    prefix_url={ props.page_url }
+                    search={ props.search } />
+            ) : false }
             
             { loading ? (
                 <Preload />
