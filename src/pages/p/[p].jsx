@@ -6,8 +6,7 @@ import ListCharacter from "@/components/ListCharacter/ListCharacter";
 const HomePagination = () => {
     const router = useRouter();
     const page_active = router.query.p;
-
-    console.log(router.query)
+    
     return (
         <LayoutDefault>
             <SearchForm />
