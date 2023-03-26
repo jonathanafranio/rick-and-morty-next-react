@@ -17,7 +17,7 @@ const SearchForm = (props) => {
         if(name.trim() !== "" ){
             search_query.push(`name=${name}`)
         }
-        search_query.join('&')
+        search_query = search_query.join('&');
         location.href = `${location.origin}/search/?${search_query}`
     } 
     return(
