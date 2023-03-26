@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import LayoutDefault from "@/components/Layouts/LayoutDefault";
 import ListCharacter from "@/components/ListCharacter/ListCharacter";
-const SearchPage = (props) => {
+const SearchPagePaged = (props) => {
     const router = useRouter();
     const { query, pathname } = router;
+    console.log({ router });
    
     const title_search = (obj_search) => {
         const string_replaces = [
@@ -46,18 +47,19 @@ const SearchPage = (props) => {
             }
         ];
         let newStr = JSON.stringify(obj_search).replaceAll('"', '').replace('{', '').replace('}', '');
+            newStr = newStr.replace(`,p:${query.p}`, '');
             newStr = newStr.replaceAll(':', ': ').replaceAll(',', ' e ');
 
         string_replaces.forEach( item => {
             newStr = newStr.replaceAll(item.text, item.replace)
         })
-        return `Resultado da busca: ${newStr}`;
+        return `Resultado da busca: ${newStr} - página ${query.p}`;
     };
 
     const [title, setTitle] = useState();
     const [search_url, setSearch_url] = useState('');
     
-    console.log({ router })
+    console.log({ router, pathname })
     
 
     useEffect(() => {
@@ -67,7 +69,7 @@ const SearchPage = (props) => {
             router.push('/');
         }
         console.log({ query })
-        let search_query = router.asPath.replace('/search', '');
+        let search_query = router.asPath.replace(`/search/p/${query.p}`, '');
         setTitle(title_search(query));
         setSearch_url(search_query);
 
@@ -80,10 +82,10 @@ const SearchPage = (props) => {
                 filtro_status={ query.status }
                 filtro_gender={ query.gender }
                 filtro_name={ query.name }
-                page_url={ pathname }
+                page_url={ pathname.replace('/p/[p]', '') }
                 search={ search_url }
             />
         </LayoutDefault>
     )
 }
-export default SearchPage;
+export default SearchPagePaged;
