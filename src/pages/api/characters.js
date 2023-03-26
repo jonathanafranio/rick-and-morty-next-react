@@ -1,8 +1,6 @@
 export default async function characters(req, res) {
     const parameters = req.query;
     const { page, status, gender, name } = parameters;
-    //console.log({page, status, gender, name})
-    //const characters = await fetch(`https://rickandmortyapi.com/api/character`).then(r => r.json());
     const variables = {};
     const query = `{\n
         characters(page: ${page? page : 1}, filter: {status: \"${status ? status : ''}\" gender: \"${gender ? gender : ''}\" name: \"${name ? name : '' }\"}) {\n

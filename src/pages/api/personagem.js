@@ -1,5 +1,4 @@
 export default async function personagem(req, res) {
-    console.log({ req });
     const parameters = req.query;
     const { id } = parameters;
     if(!id) {
