@@ -4,12 +4,12 @@ import SearchForm from '@/components/SearchForm';
 import ListCharacter from "@/components/ListCharacter/ListCharacter";
 
 const Home = () => {
-    const router = useRouter();
-    
+    //const router = useRouter();
+    //router.route
     return (
         <LayoutDefault>
             <SearchForm />
-            <ListCharacter page_url={ router.route } search="" />
+            <ListCharacter page_url={ '' } search="" />
         </LayoutDefault>
     )
 }
