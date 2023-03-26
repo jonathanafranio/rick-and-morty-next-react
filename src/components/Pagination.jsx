@@ -1,11 +1,14 @@
 import Link from "next/link"
 const Pagination = (props) => {
+    console.log({ props })
     
     const prev_page = () => {
+        if(!props.prev) return '';
         const url = props.prev < 2 ? props.prefix_url : `${props.prefix_url}/p/${props.prev}`;
         return `${url}/${props.search}`
     };
     const next_page = () => {
+        if(!props.next) return '';
         const url = props.next < props.last ? `${props.prefix_url}/p/${props.next}` : `${props.prefix_url}/p/${props.last}`
         return `${url}/${props.search}`
     };
@@ -13,44 +16,15 @@ const Pagination = (props) => {
         const url = `${props.prefix_url}`
         return `${url}/${props.search}`
     };
+    const third_page = () => {
+        if(props.prev) return '';
+        const url = `${props.prefix_url}/p/3`
+        return `${url}/${props.search}`
+    }
     const last_page = () => {
         const url = `${props.prefix_url}/p/${props.last}`
         return `${url}/${props.search}`
     };
-    const pages_num = () => {
-        const array_pages = [];
-        if(props.prev) {
-            const obj_prev = {
-                number: props.prev,
-                link: prev_page()
-            }
-            array_pages.push(obj_prev);
-        }
-        const active_page = {
-            number: props.active,
-            link: ''
-        };
-        array_pages.push(active_page)
-
-        if(props.next) {
-            const obj_next = {
-                number: props.next,
-                link: next_page()
-            };
-            array_pages.push(obj_next);
-        }
-
-        if(props.active == 1 && props.last > 2) {
-            const third = {
-                number: 3,
-                link: `${props.prefix_url}/p/3/${props.search}`
-            };
-            array_pages.push(third);
-        }
-
-        return array_pages;
-    };
-    const pagination_arr = pages_num();
 
     return (
         <nav className="pagination">
@@ -67,16 +41,36 @@ const Pagination = (props) => {
             ) }
 
             <ul className="pagination__ul">
-                { pagination_arr.length > 1 ? (
-                    pagination_arr.map( (p) => (
-                        <li className="pagination__li" key={ p }>
-                            <Link 
-                                className={ p.number == props.active ? 'pagination__link -active' : 'pagination__link' }
-                                href={ p.link }>
-                                { p.number }
-                            </Link>
-                        </li>
-                    ) )
+                { props.prev ? (
+                    <li className="pagination__li">
+                        <Link className="pagination__link" href={ prev_page() }>
+                            { props.prev }
+                        </Link>
+                    </li>
+                ) : false }
+
+                { props.active ? (
+                    <li className="pagination__li">
+                        <span className="pagination__link -active">
+                            { props.active }
+                        </span>
+                    </li>
+                ) : false }
+
+                { props.next ? (
+                    <li className="pagination__li -active">
+                        <Link className="pagination__link" href={ next_page() }>
+                            { props.next }
+                        </Link>
+                    </li>
+                ) : false }
+
+                { props.last > 2 && !props.prev  ? (
+                    <li className="pagination__li -active">
+                        <Link className="pagination__link" href={ third_page() }>
+                            3
+                        </Link>
+                    </li>
                 ) : false }
             </ul>
 

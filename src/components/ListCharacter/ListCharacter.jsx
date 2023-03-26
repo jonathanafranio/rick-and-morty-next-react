@@ -1,32 +1,31 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import Preload from '../Preload.jsx';
 import CardCharacter from './CardCharacter.jsx'
 import Pagination from '../Pagination.jsx';
 
 const ListCharacter = (props) => {
-    const page_num = props.page_num ? props.page_num : 1;
+    const router = useRouter();
+    const page_num = router.query.p ? router.query.p : 1;
+    console.log({ page_num })
     const { filtro_status, filtro_gender, filtro_name, page_url } = props;
     const search = props.filtro_status ? props.filtro_status : '';
     
     
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(page_num);
     const [characters, setCharacters] = useState([]);
-    const [pagination, setPagination] = useState({
-        next: null,
-        prev: null,
-        last: null
-    });
+    const [pagination, setPagination] = useState(null);
     const [error, setError] = useState(false);
 
-    useEffect(() => {
+    const loadCharacter = () => {
+    //useEffect(() => {
         const baseUrl = `/api/characters/?page=${page_num}`
         const status = filtro_status ? `&status=${filtro_status}` : '';
         const gender = filtro_gender ? `&gender=${filtro_gender}` : '';
         const name = filtro_name ? `&name=${name}` : '';
 
         const request_url = `${baseUrl}${status}${name}`;
-
+        
         fetch(request_url)
             .then(r => r.json())
             .then(res => {
@@ -39,13 +38,16 @@ const ListCharacter = (props) => {
                 setPagination(newPagination)
                 setCharacters(results)
                 setLoading(false)
+                
+                console.log({ pagination })
             })
             .catch(e => {
                 setLoading(false)
                 setError(true)
             })
-
-    }, [])
+    //})
+    }
+    loadCharacter();
 
 
     const title = props.title ? props.title : 'Lista de personagens';
@@ -75,7 +77,7 @@ const ListCharacter = (props) => {
                 <Pagination 
                     next={ pagination.next }
                     prev={ pagination.prev }
-                    active={ page }
+                    active={ page_num }
                     last={ pagination.last }
                     prefix_url={ props.page_url }
                     search={ props.search } />
