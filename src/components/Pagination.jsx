@@ -1,6 +1,5 @@
 import Link from "next/link"
 const Pagination = (props) => {
-    console.log({ props })
     
     const prev_page = () => {
         if(!props.prev) return '';

@@ -24,7 +24,6 @@ const ListCharacter = (props) => {
         const name = filtro_name ? `&name=${filtro_name}` : '';
 
         const request_url = `${baseUrl}${status}${gender}${name}`;
-        console.log({ request_url, gender })
         
         fetch(request_url)
             .then(r => r.json())

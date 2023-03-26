@@ -5,8 +5,7 @@ import ListCharacter from "@/components/ListCharacter/ListCharacter";
 const SearchPagePaged = (props) => {
     const router = useRouter();
     const { query, pathname } = router;
-    console.log({ router });
-   
+    
     const title_search = (obj_search) => {
         const string_replaces = [
             {
@@ -59,16 +58,12 @@ const SearchPagePaged = (props) => {
     const [title, setTitle] = useState();
     const [search_url, setSearch_url] = useState('');
     
-    console.log({ router, pathname })
-    
-
     useEffect(() => {
         if(!router.isReady) return;
 
         if(!query.name && !query.gender && !query.status) {
             router.push('/');
         }
-        console.log({ query })
         let search_query = router.asPath.replace(`/search/p/${query.p}`, '');
         setTitle(title_search(query));
         setSearch_url(search_query);

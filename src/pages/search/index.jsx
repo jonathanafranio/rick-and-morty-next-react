@@ -57,16 +57,13 @@ const SearchPage = (props) => {
     const [title, setTitle] = useState();
     const [search_url, setSearch_url] = useState('');
     
-    console.log({ router })
     
-
     useEffect(() => {
         if(!router.isReady) return;
 
         if(!query.name && !query.gender && !query.status) {
             router.push('/');
         }
-        console.log({ query })
         let search_query = router.asPath.replace('/search', '');
         setTitle(title_search(query));
         setSearch_url(search_query);
