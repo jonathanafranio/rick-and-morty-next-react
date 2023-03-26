@@ -30,8 +30,8 @@ const Pagination = (props) => {
         <nav className="pagination">
             { props.active > 1 ? (
                 <>
-                    <Link href={ first_page() } className="pagination__first">Primeira</Link>
-                    <Link href={ prev_page() } className="pagination__prev">Anterior</Link>
+                    <a href={ first_page() } className="pagination__first">Primeira</a>
+                    <a href={ prev_page() } className="pagination__prev">Anterior</a>
                 </>
             ) : (
                 <>
@@ -43,9 +43,9 @@ const Pagination = (props) => {
             <ul className="pagination__ul">
                 { props.prev ? (
                     <li className="pagination__li">
-                        <Link className="pagination__link" href={ prev_page() }>
+                        <a className="pagination__link" href={ prev_page() }>
                             { props.prev }
-                        </Link>
+                        </a>
                     </li>
                 ) : false }
 
@@ -59,17 +59,17 @@ const Pagination = (props) => {
 
                 { props.next ? (
                     <li className="pagination__li -active">
-                        <Link className="pagination__link" href={ next_page() }>
+                        <a className="pagination__link" href={ next_page() }>
                             { props.next }
-                        </Link>
+                        </a>
                     </li>
                 ) : false }
 
                 { props.last > 2 && !props.prev  ? (
                     <li className="pagination__li -active">
-                        <Link className="pagination__link" href={ third_page() }>
+                        <a className="pagination__link" href={ third_page() }>
                             3
-                        </Link>
+                        </a>
                     </li>
                 ) : false }
             </ul>
@@ -78,8 +78,8 @@ const Pagination = (props) => {
 
             { props.active < props.last ? (
                 <>
-                    <Link href={ next_page() } className="pagination__next">Próxima</Link>
-                    <Link href={ last_page() } className="pagination__last">Última</Link>
+                    <a href={ next_page() } className="pagination__next">Próxima</a>
+                    <a href={ last_page() } className="pagination__last">Última</a>
 
                 </>
             ) : (
