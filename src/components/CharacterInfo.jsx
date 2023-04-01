@@ -17,7 +17,7 @@ const CharacterInfo = (props) => {
             unknown: 'Desconhecido',
             default: status_str
         }
-        return status[status] || status.default
+        return status[status_str] || status.default
     };
     return (
         <div className="character-info">
