@@ -1,7 +1,7 @@
 .header {
 	width: 100%;
 	padding: 10px 0;
-  position: fixed;
+	position: fixed;
 	top: 0;
 	background-color: $bg_header;
 	box-shadow: 0 0 15px 0 rgba(255, 255, 255, .15);
@@ -10,13 +10,13 @@
 	.container {
 		display: flex;
 		align-items: center;
+    	justify-content: center;
 		height: 100%;
-    justify-content: center;
 	}
 
 	&__logo {
-    width: 140px;
-    margin: auto;
+		width: 140px;
+		margin: auto;
 	}
 
 }

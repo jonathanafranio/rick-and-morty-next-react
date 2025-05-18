@@ -14,7 +14,7 @@ const ListCharacter = (props) => {
     const [characters, setCharacters] = useState([]);
     const [pagination, setPagination] = useState(null);
     const [error, setError] = useState(false);
-
+    
     useEffect(() => {
         if(!router.isReady) return;
 
@@ -30,8 +30,7 @@ const ListCharacter = (props) => {
             .then(res => {
                 const { results, info } = res
                 const newPagination = {
-                    next: info.next,
-                    prev: info.prev,
+                    ...info,
                     last: info.pages
                 };
                 setPagination(newPagination)

@@ -30,7 +30,7 @@ export default async function personagem(req, res) {
     const option_req = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: query, variables: variables })
+        body: JSON.stringify({ query, variables })
     }
 
     const personagem = await fetch(`https://rickandmortyapi.com/graphql`, option_req)
